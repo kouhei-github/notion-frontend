@@ -4,7 +4,7 @@ module.exports = {
   jsxSingleQuote: true,
   bracketSpacing: true,
   singleQuote: false,
-  semi: true,
+  semi: false,
   printWidth: 100,
   trailingComma: "all",
   importOrder: [
@@ -23,4 +23,4 @@ module.exports = {
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
   plugins: ["@trivago/prettier-plugin-sort-imports"],
-};
+}
