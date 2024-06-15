@@ -2,6 +2,7 @@
 
 import React from "react"
 
+import UserItem from "@/app/(main)/_components/user-item"
 import { useNavigationBar } from "@/app/(main)/_hooks/use-navigation-bar"
 import { cn } from "@/lib/utils"
 import { ChevronsLeft, MenuIcon } from "lucide-react"
@@ -42,7 +43,7 @@ const Navigation = () => {
           <ChevronsLeft className={"h-6 w-6"} />
         </div>
         <div>
-          <p>Action items</p>
+          <UserItem />
         </div>
         <div className={"mt-4"}>
           <p>Documents</p>

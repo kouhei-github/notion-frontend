@@ -26,7 +26,7 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
   return (
     <div className={"h-full flex dark:bg-[#1F1F1F]"}>
       <Navigation />
-      <main>{children}</main>
+      <main className={"w-full"}>{children}</main>
     </div>
   )
 }
