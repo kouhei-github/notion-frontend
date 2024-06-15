@@ -1,0 +1,5 @@
+*.md
+.next/
+.github/workflows/azure-static-web-apps-black-dune-01bc2f500.yml
+.github/workflows/azure-static-web-apps-calm-field-089396400.yml
+public/static/favicon_io/*
