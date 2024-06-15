@@ -1,0 +1,6 @@
+.idea
+.vscode
+.env
+.env*
+!.env.sample
+node_modules
