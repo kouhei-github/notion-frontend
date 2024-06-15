@@ -10,3 +10,4 @@ src/app/globals.css
 components.json
 next.config.mjs
 postcss.config.mjs
+convex
