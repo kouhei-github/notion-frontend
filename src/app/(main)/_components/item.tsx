@@ -25,7 +25,7 @@ interface ItemProps {
   level?: number
   onExpand?: () => void
   label: string
-  onClick: () => void
+  onClick?: () => void
   icon: LucideIcon
 }
 
@@ -82,7 +82,7 @@ const Item = ({
 
   return (
     <div
-      onClick={() => onClick()}
+      onClick={() => onClick?.()}
       role={"button"}
       className={cn(
         "pl-[12px] group min-h-[27px] text-sm py-1 pr-3 w-full hover:bg-primary/5 flex items-center text-muted-foreground font-medium",

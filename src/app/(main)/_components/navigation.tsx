@@ -6,8 +6,9 @@ import DocumentList from "@/app/(main)/_components/document-list"
 import Item from "@/app/(main)/_components/item"
 import UserItem from "@/app/(main)/_components/user-item"
 import { useNavigationBar } from "@/app/(main)/_hooks/use-navigation-bar"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { cn } from "@/lib/utils"
-import { ChevronsLeft, MenuIcon, Plus, PlusCircle, Search, Settings } from "lucide-react"
+import { ChevronsLeft, MenuIcon, Plus, PlusCircle, Search, Settings, Trash } from "lucide-react"
 
 const Navigation = () => {
   const {
@@ -55,6 +56,14 @@ const Navigation = () => {
         <div className={"mt-4"}>
           <DocumentList />
           <Item label={"Add a page"} onClick={() => handleCreate()} icon={Plus} />
+          <Popover>
+            <PopoverTrigger className='w-full mt-4'>
+              <Item label='Trash' icon={Trash} />
+            </PopoverTrigger>
+            <PopoverContent className='p-0 w-72' side={isMobile ? "bottom" : "right"}>
+              <p>Trash box</p>
+            </PopoverContent>
+          </Popover>
         </div>
         <div
           onMouseDown={(e) => {
