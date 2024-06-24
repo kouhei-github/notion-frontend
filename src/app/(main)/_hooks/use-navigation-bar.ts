@@ -5,7 +5,8 @@ import React, { ElementRef, useEffect, useRef, useState } from "react"
 import { usePathname } from "next/navigation"
 
 import { api } from "../../../../convex/_generated/api"
-import { useQuery } from "convex/react"
+import { useMutation, useQuery } from "convex/react"
+import { toast } from "sonner"
 import { useMediaQuery } from "usehooks-ts"
 
 const useNavigationBar = () => {
@@ -87,6 +88,18 @@ const useNavigationBar = () => {
 
   const documents = useQuery(api.documents.get)
 
+  const create = useMutation(api.documents.create)
+
+  const handleCreate = () => {
+    const promise = create({ title: "Untitled" })
+
+    toast.promise(promise, {
+      loading: "Creating a new note...",
+      success: "New note created!",
+      error: "Failed to create a new note.",
+    })
+  }
+
   return {
     pathname,
     isMobile,
@@ -101,6 +114,7 @@ const useNavigationBar = () => {
     resetWidth,
     collapse,
     documents,
+    handleCreate,
   }
 }
 

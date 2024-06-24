@@ -2,10 +2,11 @@
 
 import React from "react"
 
+import Item from "@/app/(main)/_components/item"
 import UserItem from "@/app/(main)/_components/user-item"
 import { useNavigationBar } from "@/app/(main)/_hooks/use-navigation-bar"
 import { cn } from "@/lib/utils"
-import { ChevronsLeft, MenuIcon } from "lucide-react"
+import { ChevronsLeft, MenuIcon, PlusCircle, Search, Settings } from "lucide-react"
 
 const Navigation = () => {
   const {
@@ -22,6 +23,7 @@ const Navigation = () => {
     resetWidth,
     collapse,
     documents,
+    handleCreate,
   } = useNavigationBar()
   return (
     <>
@@ -45,6 +47,10 @@ const Navigation = () => {
         </div>
         <div>
           <UserItem />
+          <Item onClick={() => {}} label='Search' icon={Search} isSearch />
+          <Item onClick={() => {}} label='Settings' icon={Settings} />
+
+          <Item onClick={() => handleCreate()} label='New page' icon={PlusCircle} />
         </div>
         <div className={"mt-4"}>
           {documents?.map((document) => <p key={document._id}>{document.title}</p>)}
