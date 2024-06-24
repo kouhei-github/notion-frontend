@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, useState } from "react"
 
 import { SettingModal } from "@/components/modals/setting-modal"

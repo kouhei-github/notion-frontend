@@ -2,13 +2,17 @@
 
 import React from "react"
 
+import { useParams } from "next/navigation"
+
 import DocumentList from "@/app/(main)/_components/document-list"
 import Item from "@/app/(main)/_components/item"
+import Navbar from "@/app/(main)/_components/navbar"
 import TrashBox from "@/app/(main)/_components/trash-box"
 import UserItem from "@/app/(main)/_components/user-item"
 import { useNavigationBar } from "@/app/(main)/_hooks/use-navigation-bar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { useSearch } from "@/hooks/use-search"
+import { useSettings } from "@/hooks/use-setting"
 import { cn } from "@/lib/utils"
 import { ChevronsLeft, MenuIcon, Plus, PlusCircle, Search, Settings, Trash } from "lucide-react"
 
@@ -29,7 +33,10 @@ const Navigation = () => {
     handleCreate,
   } = useNavigationBar()
 
+  const params = useParams()
+
   const search = useSearch()
+  const settings = useSettings()
   return (
     <>
       <aside
@@ -60,7 +67,13 @@ const Navigation = () => {
             icon={Search}
             isSearch
           />
-          <Item onClick={() => {}} label='Settings' icon={Settings} />
+          <Item
+            onClick={() => {
+              settings.onOpen()
+            }}
+            label='Settings'
+            icon={Settings}
+          />
 
           <Item onClick={() => handleCreate()} label='New page' icon={PlusCircle} />
         </div>
@@ -96,15 +109,19 @@ const Navigation = () => {
           isMobile && "left-0 w-full",
         )}
       >
-        <nav>
-          {isCollapsed && (
-            <MenuIcon
-              onClick={() => resetWidth()}
-              role={"button"}
-              className={"h-6 w-6 text-muted-foreground"}
-            />
-          )}
-        </nav>
+        {!!params.documentId ? (
+          <Navbar isCollapsed={isCollapsed} onResetWidth={resetWidth} />
+        ) : (
+          <nav>
+            {isCollapsed && (
+              <MenuIcon
+                onClick={() => resetWidth()}
+                role={"button"}
+                className={"h-6 w-6 text-muted-foreground"}
+              />
+            )}
+          </nav>
+        )}
       </div>
     </>
   )
