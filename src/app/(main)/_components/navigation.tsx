@@ -4,6 +4,7 @@ import React from "react"
 
 import DocumentList from "@/app/(main)/_components/document-list"
 import Item from "@/app/(main)/_components/item"
+import TrashBox from "@/app/(main)/_components/trash-box"
 import UserItem from "@/app/(main)/_components/user-item"
 import { useNavigationBar } from "@/app/(main)/_hooks/use-navigation-bar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
@@ -61,7 +62,7 @@ const Navigation = () => {
               <Item label='Trash' icon={Trash} />
             </PopoverTrigger>
             <PopoverContent className='p-0 w-72' side={isMobile ? "bottom" : "right"}>
-              <p>Trash box</p>
+              <TrashBox />
             </PopoverContent>
           </Popover>
         </div>
