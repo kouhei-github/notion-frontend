@@ -21,6 +21,7 @@ const Navigation = () => {
     handleMouseDown,
     resetWidth,
     collapse,
+    documents,
   } = useNavigationBar()
   return (
     <>
@@ -46,7 +47,7 @@ const Navigation = () => {
           <UserItem />
         </div>
         <div className={"mt-4"}>
-          <p>Documents</p>
+          {documents?.map((document) => <p key={document._id}>{document.title}</p>)}
         </div>
         <div
           onMouseDown={(e) => {

@@ -4,6 +4,8 @@ import React, { ElementRef, useEffect, useRef, useState } from "react"
 
 import { usePathname } from "next/navigation"
 
+import { api } from "../../../../convex/_generated/api"
+import { useQuery } from "convex/react"
 import { useMediaQuery } from "usehooks-ts"
 
 const useNavigationBar = () => {
@@ -83,6 +85,8 @@ const useNavigationBar = () => {
     }
   }
 
+  const documents = useQuery(api.documents.get)
+
   return {
     pathname,
     isMobile,
@@ -96,6 +100,7 @@ const useNavigationBar = () => {
     handleMouseDown,
     resetWidth,
     collapse,
+    documents,
   }
 }
 
