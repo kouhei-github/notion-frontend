@@ -2,23 +2,23 @@
 
 import React from "react"
 
+import DocumentList from "@/app/(main)/_components/document-list"
 import Item from "@/app/(main)/_components/item"
 import UserItem from "@/app/(main)/_components/user-item"
 import { useNavigationBar } from "@/app/(main)/_hooks/use-navigation-bar"
 import { cn } from "@/lib/utils"
-import { ChevronsLeft, MenuIcon, PlusCircle, Search, Settings } from "lucide-react"
+import { ChevronsLeft, MenuIcon, Plus, PlusCircle, Search, Settings } from "lucide-react"
 
 const Navigation = () => {
   const {
-    pathname,
     isMobile,
-    isResizingRef,
+
     sidebarRef,
     navbarRef,
     isResetting,
-    setIsResetting,
+
     isCollapsed,
-    setIsCollapsed,
+
     handleMouseDown,
     resetWidth,
     collapse,
@@ -53,7 +53,8 @@ const Navigation = () => {
           <Item onClick={() => handleCreate()} label='New page' icon={PlusCircle} />
         </div>
         <div className={"mt-4"}>
-          {documents?.map((document) => <p key={document._id}>{document.title}</p>)}
+          <DocumentList />
+          <Item label={"Add a page"} onClick={() => handleCreate()} icon={Plus} />
         </div>
         <div
           onMouseDown={(e) => {
