@@ -6,6 +6,7 @@ import { redirect } from "next/navigation"
 
 import Navigation from "@/app/(main)/_components/navigation"
 import Spinner from "@/components/providers/spinner"
+import SearchCommand from "@/components/search-command"
 import { useConvexAuth } from "convex/react"
 
 const MainLayout = ({ children }: { children: ReactNode }) => {
@@ -26,7 +27,10 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
   return (
     <div className={"h-full flex dark:bg-[#1F1F1F]"}>
       <Navigation />
-      <main className={"w-full"}>{children}</main>
+      <main className={"w-full"}>
+        <SearchCommand />
+        {children}
+      </main>
     </div>
   )
 }

@@ -8,6 +8,7 @@ import TrashBox from "@/app/(main)/_components/trash-box"
 import UserItem from "@/app/(main)/_components/user-item"
 import { useNavigationBar } from "@/app/(main)/_hooks/use-navigation-bar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { useSearch } from "@/hooks/use-search"
 import { cn } from "@/lib/utils"
 import { ChevronsLeft, MenuIcon, Plus, PlusCircle, Search, Settings, Trash } from "lucide-react"
 
@@ -27,6 +28,8 @@ const Navigation = () => {
     documents,
     handleCreate,
   } = useNavigationBar()
+
+  const search = useSearch()
   return (
     <>
       <aside
@@ -49,7 +52,14 @@ const Navigation = () => {
         </div>
         <div>
           <UserItem />
-          <Item onClick={() => {}} label='Search' icon={Search} isSearch />
+          <Item
+            onClick={() => {
+              search.onOpen()
+            }}
+            label='Search'
+            icon={Search}
+            isSearch
+          />
           <Item onClick={() => {}} label='Settings' icon={Settings} />
 
           <Item onClick={() => handleCreate()} label='New page' icon={PlusCircle} />
